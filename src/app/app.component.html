@@ -1,0 +1,59 @@
+<div class="nav-bar" style="height: 20vh">
+<app-navigation-bar></app-navigation-bar>
+</div>
+<div class="container"> 
+  <!-- <div class="row">
+    <div class="col-2">
+      <mat-card>
+        <h1>Fields</h1>
+      <ul>
+        <li *ngFor="let hit of hits" style="padding: 5px;">
+          {{hit._index | json}}
+        </li>
+      </ul>
+    </mat-card>
+    </div>  
+    <div class="col-8" >
+      <mat-card>
+        <h1>Logs</h1>
+    <ul>
+      <li *ngFor="let hit of hits" style="padding: 5px;">
+          <pre>{{hit | json}}</pre>
+      </li>
+    </ul>
+      </mat-card>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-2">
+      <mat-card>
+        <h1>Fields</h1>
+      <ul>
+        <li *ngFor="let hit of hits" style="padding: 5px;">
+          {{hit._index | json}}
+        </li>
+      </ul>
+    </mat-card>
+  </div>
+  <div class="col-7">
+    <h1>Logs</h1>
+  <mat-accordion *ngFor="let hit of hits">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>    
+          <pre>{{hit._id | json}}</pre>
+        </mat-panel-title>
+        <mat-panel-description>
+        
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <li  style="padding: 5px;">
+        <pre>{{hit | json}}</pre>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+</div>
+</div>
+
+
