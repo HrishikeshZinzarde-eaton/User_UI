@@ -3,7 +3,7 @@
     padding: 2px;
     position: relative;
 }
-.col-2
+.col-3
 {
 
     
@@ -16,11 +16,17 @@
 
 }
 mat-panel-title{
-    height: fit-content;
+  
+
 }
 mat-expansion-panel{
     padding: 5px;
 }
 mat-accordion{
     padding: 2px;
+}
+mat-radio-button{
+    padding: 5px;
+    display: block;
+    
 }

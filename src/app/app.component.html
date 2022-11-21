@@ -1,7 +1,11 @@
 <div class="nav-bar" style="height: 20vh">
 <app-navigation-bar></app-navigation-bar>
 </div>
+
 <div class="container"> 
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchText" [(ngModel)]="searchText" (ngModelChange)="Search()"  > 
+  </form>
   <!-- <div class="row">
     <div class="col-2">
       <mat-card>
@@ -25,33 +29,45 @@
     </div>
   </div> -->
   <div class="row">
-    <div class="col-2">
-      <mat-card>
+    <div class="col-2" style="padding-top: 70px;">
+      <mat-card style="width: fit-content;">
         <h1>Fields</h1>
       <ul>
-        <li *ngFor="let hit of hits" style="padding: 5px;">
-          {{hit._index | json}}
-        </li>
+        <div class="form-radio">
+          <mat-radio-group aria-label="Select an option">
+           <mat-radio-button value="1" *ngFor="let hit of keys"> {{hit}}</mat-radio-button> 
+      </mat-radio-group>
+    
+        </div>
       </ul>
-    </mat-card>
-  </div>
-  <div class="col-7">
+      </mat-card>
+    </div>
+  <div class="col-7" style="padding-top: 20px;">
     <h1>Logs</h1>
-  <mat-accordion *ngFor="let hit of hits">
+  
+   
+  <mat-accordion *ngFor="let hit of hits" >
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>    
-          <pre>{{hit._id | json}}</pre>
+      <mat-expansion-panel-header  [collapsedHeight]="'10s0px'" [expandedHeight]="'190px'" >
+        
+        <mat-panel-title >    
+          <pre >Time stamps : {{hit._source["@timestamp"] | json}}</pre>
         </mat-panel-title>
         <mat-panel-description>
         
         </mat-panel-description>
+        
       </mat-expansion-panel-header>
-      <li  style="padding: 5px;">
-        <pre>{{hit | json}}</pre>
+     
+     
+        
+      <pre >{{hit | json }}</pre>
+     
     </mat-expansion-panel>
+
   </mat-accordion>
+
 </div>
 </div>
 </div>
